@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Anchorman Server</title>
+	</head>
+	<body>
+		<h1>Server Information</h1>
+		<p id="port"></p>
+		<p id="route"></p>
+		<p>Status: Running</p>
+
+		<script>
+			fetch('/api/v1/server-info')
+				.then((response) => response.json())
+				.then((res) => {
+					document.getElementById('port').textContent = 'Port: ' + res.data.port;
+					document.getElementById('route').textContent = 'API Route: ' + res.data.route;
+				});
+		</script>
+	</body>
+</html>
