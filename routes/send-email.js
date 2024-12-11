@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
 
 	try {
 		await transporter.sendMail({
-			from: sender,
+			from: `${sender} <${user}>`,
 			to: to,
 			replyTo: replyTo,
 			subject: subject,
