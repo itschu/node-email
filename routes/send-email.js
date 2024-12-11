@@ -3,7 +3,7 @@ const nodemailer = require('nodemailer');
 const router = express.Router();
 
 router.post('/', async (req, res) => {
-	const { to, subject, message, replyTo, sender, host, port, secure, user, pass, smtpp } = req.body;
+	const { to, subject, message, replyTo, sender, host, port, secure, user, pass, smtpp, email } = req.body;
 
 	const smtp = {
 		host,
@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
 
 	try {
 		await transporter.sendMail({
-			from: `${sender} <${user}>`,
+			from: `${sender} <${email}>`,
 			to: to,
 			replyTo: replyTo,
 			subject: subject,
